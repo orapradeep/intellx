@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="63px" height="63px" viewBox="0 0 63 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>svg_PinBlue</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="svg_PinBlue" transform="translate(-6.000000, -6.000000)">
+            <g id="Group" transform="translate(37.138793, 37.138793) rotate(-79.000000) translate(-37.138793, -37.138793) translate(5.638793, 5.638793)">
+                <ellipse id="Oval-2" fill="#4DC6FF" fill-rule="nonzero" opacity="0.249037591" cx="31.4187408" cy="31.4375" rx="30.9546952" ry="30.9698098"></ellipse>
+                <g id="Oval-2" transform="translate(23.000000, 23.000000)">
+                    <g id="path-1-link" transform="translate(1.000000, 1.000000)" fill-rule="nonzero" fill="#000000">
+                        <ellipse id="path-1" cx="7.4187408" cy="7.4375" rx="6.55929722" ry="6.5625"></ellipse>
+                    </g>
+                    <g id="path-1-link" transform="translate(1.000000, 1.000000)" fill="#14A5CC">
+                        <ellipse id="path-1" cx="7.4187408" cy="7.4375" rx="6.55929722" ry="6.5625"></ellipse>
+                    </g>
+                    <ellipse id="Oval" stroke="#FFFFFF" stroke-width="3" cx="8.4187408" cy="8.4375" rx="8.05929722" ry="8.0625"></ellipse>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

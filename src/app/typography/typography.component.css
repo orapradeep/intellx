@@ -1,0 +1,15 @@
+ul li {
+    float: left;
+    width: 200px;
+    height: auto;
+}
+
+.errorMessage_class {
+    width: 40%;
+    font-size: 16px
+}
+
+.youtube_class {
+    padding: 20px;
+    border: 1px solid lightgray;
+}

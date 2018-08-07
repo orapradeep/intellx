@@ -1,0 +1,294 @@
+<div class="main-content">
+    <div class="container-fluid">
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <button (click)="expandFaceDetectionSection()" class="btn btn-primary btn-fill my-2">
+                    Try Face Detection
+                </button>
+            </div>
+        </div>
+
+
+
+        <div class="row" style="padding-top:20px">
+            <div class="col-md-6">
+                <video id="video2" style="display:none" width="90%" height="100%" autoplay></video>
+            </div>
+
+            <div *ngIf="errorMessage" class="alert alert-danger text-center errorMessage_class">{{errorMessage}}</div>
+
+
+            <div class="col-md-6" id="myCanvasDiv" style="display:none;">
+
+                <!-- <button (click)="processImage()" class="btn btn-fill btn-primary">Take picture</button> -->
+
+                <button id="capture" class="btn btn-fill btn-primary pull-right">Take picture</button>
+                <canvas id="myCanvas"></canvas>
+
+                <ul class="list-group" style="margin-top:20px" *ngIf="faceApiResponse">
+                    <li class="list-group-item">
+                        Gender : {{faceApiResponse[0]?.faceAttributes?.gender}}
+                    </li>
+                    <li class="list-group-item">
+                        Smiling : {{faceApiResponse[0]?.faceAttributes?.smile | percent}}
+                    </li>
+                    <li class="list-group-item">
+                        Anger : {{faceApiResponse[0]?.faceAttributes?.emotion?.anger | percent}}
+                    </li>
+                    <li class="list-group-item">
+                        Age : {{faceApiResponse[0]?.faceAttributes?.age}}
+                    </li>
+                    <li class="list-group-item">
+                        Happiness : {{faceApiResponse[0]?.faceAttributes?.emotion?.happiness | percent}}
+                    </li>
+                    <li class="list-group-item">
+                        Sadness : {{faceApiResponse[0]?.faceAttributes?.emotion?.sadness | percent}}
+                    </li>
+                    <li class="list-group-item">
+                        Glasses : {{faceApiResponse[0]?.faceAttributes?.glasses}}
+                    </li>
+                    <li class="list-group-item">
+                        Neutral : {{faceApiResponse[0]?.faceAttributes?.emotion?.neutral | percent}}
+                    </li>
+                    <li class="list-group-item">
+                        Fear : {{faceApiResponse[0]?.faceAttributes?.emotion?.fear | percent}}
+                    </li>
+                    <li class="list-group-item">
+                        Moustache : {{faceApiResponse[0]?.faceAttributes?.facialHair?.moustache | percent}}
+                    </li>
+                    <li class="list-group-item">
+                        Surprise : {{faceApiResponse[0]?.faceAttributes?.emotion?.surprise | percent}}
+                    </li>
+                    <li class="list-group-item">
+                        Disgust : {{faceApiResponse[0]?.faceAttributes?.emotion?.disgust | percent}}
+                    </li>
+                </ul>
+
+
+                <div id="loader" *ngIf="isRequestProcessing" style="margin-left:35%">
+                    <img src="assets/img/loader-preview.svg" alt="loading">
+                </div>
+
+
+                <!-- <div class="row">
+                    <div class="col-md-12">
+                        <canvas id="myCanvas"></canvas>
+                    </div>
+                </div> -->
+
+
+                <!-- 
+                <div class="card" id="myCanvasDiv">
+                    <div class="content">
+
+                        <canvas id="myCanvas2" width="100%" height="400px"></canvas>
+                    </div>
+                </div> -->
+
+                <!-- <video id="video2" #video2 width="400" height="450" controls autoplay></video> -->
+                <!-- <img *ngIf="!faceApiResponse" [src]="imageString" id="photo" alt="imageString" width="100%" height="400px"> -->
+
+
+
+
+            </div>
+
+            <!-- <div class="col-md-6">
+                    <div *ngIf="faceApiResponse">
+
+
+                        <div class="card1" style="margin-top:40px">
+
+
+                            <canvas id="myCanvas" width="100%" height="400px"></canvas>
+
+
+                            <ul class="list-group" style="margin-top:40px">
+                                <li class="list-group-item">
+                                    Gender : {{faceApiResponse[0]?.faceAttributes?.gender}}
+                                </li>
+                                <li class="list-group-item">
+                                    Smiling : {{faceApiResponse[0]?.faceAttributes?.smile | percent}}
+                                </li>
+                                <li class="list-group-item">
+                                    Anger : {{faceApiResponse[0]?.faceAttributes?.emotion?.anger | percent}}
+                                </li>
+                                <li class="list-group-item">
+                                    Age : {{faceApiResponse[0]?.faceAttributes?.age}}
+                                </li>
+                                <li class="list-group-item">
+                                    Happiness : {{faceApiResponse[0]?.faceAttributes?.emotion?.happiness | percent}}
+                                </li>
+                                <li class="list-group-item">
+                                    Sadness : {{faceApiResponse[0]?.faceAttributes?.emotion?.sadness | percent}}
+                                </li>
+                                <li class="list-group-item">
+                                    Glasses : {{faceApiResponse[0]?.faceAttributes?.glasses}}
+                                </li>
+                                <li class="list-group-item">
+                                    Neutral : {{faceApiResponse[0]?.faceAttributes?.emotion?.neutral | percent}}
+                                </li>
+                                <li class="list-group-item">
+                                    Fear : {{faceApiResponse[0]?.faceAttributes?.emotion?.fear | percent}}
+                                </li>
+                                <li class="list-group-item">
+                                    Moustache : {{faceApiResponse[0]?.faceAttributes?.facialHair?.moustache | percent}}
+                                </li>
+                                <li class="list-group-item">
+                                    Surprise : {{faceApiResponse[0]?.faceAttributes?.emotion?.surprise | percent}}
+                                </li>
+                                <li class="list-group-item">
+                                    Disgust : {{faceApiResponse[0]?.faceAttributes?.emotion?.disgust | percent}}
+                                </li>
+                            </ul>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                 -->
+            <!-- </div> -->
+
+        </div>
+
+
+        <br/>
+
+
+
+        <hr style="border-color: lightgrey" />
+
+        <div class="row" style="padding-top:40px;">
+
+            <div class="col-md-6">
+                <div class="card">
+                    <iframe class="youtube_class" width="100%" height="500px" [src]="objDetectionURL1 | safe">
+                    </iframe>
+                    <div class="content">
+                        <p class="description text-center">
+                            Object Detection using Tensorflow
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <iframe class="youtube_class" width="100%" height="500px" [src]="objDetectionURL2 | safe">
+                    </iframe>
+                    <div class="content">
+                        <p class="description text-center">
+                            Object Detection using Tensorflow
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Light Bootstrap Table Heading</h4>
+                        <p class="category">Created using Roboto Font Family</p>
+                    </div>
+                    <div class="content">
+
+                        <div class="typo-line">
+                            <h1><p class="category">Header 1</p>Light Bootstrap Table Heading </h1>
+                        </div>
+
+                        <div class="typo-line">
+                            <h2><p class="category">Header 2</p>Light Bootstrap Table Heading</h2>
+                        </div>
+                        <div class="typo-line">
+                            <h3><p class="category">Header 3</p>Light Bootstrap Table Heading</h3>
+                        </div>
+                        <div class="typo-line">
+                            <h4><p class="category">Header 4</p>Light Bootstrap Table Heading</h4>
+                        </div>
+                        <div class="typo-line">
+                            <h5><p class="category">Header 5</p>Light Bootstrap Table Heading</h5>
+                        </div>
+                        <div class="typo-line">
+                            <h6><p class="category">Header 6</p>Light Bootstrap Table Heading</h6>
+                        </div>
+                        <div class="typo-line">
+                            <p><span class="category">Paragraph</span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.</p>
+                        </div>
+                        <div class="typo-line">
+                            <p class="category">Quote</p>
+                            <blockquote>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.
+                                </p>
+                                <small>
+                                    Steve Jobs, CEO Apple
+                                </small>
+                            </blockquote>
+                        </div>
+
+                        <div class="typo-line">
+                            <p class="category">Muted Text</p>
+                            <p class="text-muted">
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.
+                            </p>
+                        </div>
+                        <div class="typo-line">
+
+                            <p class="category">Coloured Text
+                            </p>
+                            <p class="text-primary">
+                                Text Primary - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
+                            </p>
+                            <p class="text-info">
+                                Text Info - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
+                            </p>
+                            <p class="text-success">
+                                Text Success - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
+                            </p>
+                            <p class="text-warning">
+                                Text Warning - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
+                            </p>
+                            <p class="text-danger">
+                                Text Danger - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
+                            </p>
+                        </div>
+                        <div class="typo-line">
+                            <h2><p class="category">Small Tag</p>Header with small subtitle <br><small>".small" is a tag for the headers</small> </h2>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+
+
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="card">
+                    <iframe class="youtube_class" width="100%" height="500px" [src]="faceRecognitionURL1 | safe">
+                    </iframe>
+                    <div class="content">
+                        <p class="description text-center">
+                            Face Recognition using Python
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <!-- <iframe style="border:1px solid lightgray" width="100%" height="500px" [src]="objDetectionURL2 | safe">
+                    </iframe> -->
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

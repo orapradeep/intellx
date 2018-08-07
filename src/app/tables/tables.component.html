@@ -1,0 +1,122 @@
+<div class="main-content">
+    <div class="container-fluid">
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+
+
+                    <div class="list-group">
+                        <a *ngFor="let item of mobileApps_arr" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">
+                                    <b>{{item.title}}</b>
+                                </h5>
+                            </div>
+                            <p class="mb-1">{{item.desc}}</p>
+                            <p>
+                                <a class="image_links" (click)="openBrowser(item.link)">{{item.link}}</a>
+                            </p>
+                        </a>
+
+                    </div>
+
+                    <!-- 
+                    <div class="header">
+                        <h4 class="title">Striped Table with Hover</h4>
+                        <p class="category">Here is a subtitle for this table</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                          <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of tableData1.dataRows">
+                                        <td *ngFor="let cell of row">{{cell}}</td>
+                                    </tr>
+                                </tbody>
+                          </table>
+
+                    </div> -->
+
+
+                </div>
+            </div>
+
+
+            <!-- <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="header">
+                        <h4 class="title">Table on Plain Background</h4>
+                        <p class="category">Here is a subtitle for this table</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th *ngFor="let cell of tableData2.headerRow">{{ cell }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of tableData2.dataRows">
+                                    <td *ngFor="let cell of row">{{cell}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> -->
+
+
+
+
+            <div class="col-md-12">
+                <div class="card">
+
+                    <div class="list-group">
+                        <a class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">
+                                    <!-- <b>{{item.title}}</b> -->
+                                    <h4 class="title">
+                                        Other Apps
+                                    </h4>
+
+                                </h5>
+                            </div>
+                            <p class="mb-1" style="padding-bottom:10px">
+                                <a class="image_links" (click)="openBrowser('https://itunes.apple.com/my/developer/biranchi-n/id879967039');">https://itunes.apple.com/my/developer/biranchi-n/id879967039</a>
+                            </p>
+                            <p>
+                                <img src="assets/img/Personal_iOS_Apps.png" width="100%" height="100%" alt="iOS Apps" />
+                            </p>
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- <div class="header">
+                        <h4 class="title">iOS Apps</h4>
+                    </div>
+
+                    <div class="content table-responsive table-full-width">
+                        <a class="image_links" (click)="openBrowser('https://itunes.apple.com/my/developer/biranchi-n/id879967039');">https://itunes.apple.com/my/developer/biranchi-n/id879967039</a>
+                    </div>
+
+                    <div class="list-group">
+                        <img src="assets/img/Personal_iOS_Apps.png" width="100%" height="100%" alt="iOS Apps" />
+                    </div> -->
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
